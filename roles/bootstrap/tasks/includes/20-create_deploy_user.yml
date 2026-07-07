@@ -3,7 +3,7 @@
   ansible.builtin.group:
     name: "{{ bootstrap_ssh_users_group_name }}"
     state: present
-  register: group_creation
+  register: bootstrap_group_creation
 
 - name: Create ansible management station's user and append them to groups
   ansible.builtin.user:
@@ -21,4 +21,4 @@
   ansible.posix.authorized_key:
     user: "{{ bootstrap_deploy_user }}"
     key: "{{ lookup('file', bootstrap_deploy_user_ssh_key_file) }}"
-  register: ssh_key_upload
+  register: bootstrap_ssh_key_upload

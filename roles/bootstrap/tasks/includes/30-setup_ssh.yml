@@ -1,8 +1,8 @@
 ---
 - name: Secure SSH Daemon Configuration
   when:
-    - group_creation is success
-    - ssh_key_upload is success
+    - bootstrap_group_creation is success
+    - bootstrap_ssh_key_upload is success
   block:
 
     - name: Deploy main sshd_config with Include directive
