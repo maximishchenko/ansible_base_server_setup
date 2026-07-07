@@ -2,6 +2,7 @@
 .vaultpass
 .ansible/
 .venv/
+.claude/
 
 files/*
 !files/.gitkeep
