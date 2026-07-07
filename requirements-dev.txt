@@ -1,0 +1,6 @@
+# Dev/CI-инструменты (ставятся в .venv через make dev-deps).
+# Включают runtime-зависимости из requirements.txt.
+-r requirements.txt
+ansible-lint==25.2.1
+yamllint==1.37.1
+pre-commit==4.6.0

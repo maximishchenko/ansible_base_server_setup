@@ -1,5 +1,7 @@
 ---
 extends: default
+# Не линтовать то, что игнорирует git (.venv/, .ansible/, vault, реальный inventory…).
+ignore-from-file: .gitignore
 rules:
   # Ansible требует длинные строки для команд
   line-length:

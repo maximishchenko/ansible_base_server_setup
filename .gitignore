@@ -1,6 +1,7 @@
 /**/vault
 .vaultpass
 .ansible/
+.venv/
 
 files/*
 !files/.gitkeep

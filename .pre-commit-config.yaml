@@ -1,0 +1,35 @@
+---
+# Установка хуков: make dev-deps && pre-commit install
+# Разовый прогон по всем файлам: make pre-commit
+minimum_pre_commit_version: "3.5.0"
+
+repos:
+  # Детект секретов (обязательно — см. AGENTS.md).
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  # Базовая гигиена файлов (согласовано с .editorconfig).
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-merge-conflict
+
+  # Линтеры Ansible/YAML — локальные хуки на пиновых версиях из requirements-dev.txt.
+  - repo: local
+    hooks:
+      - id: yamllint
+        name: yamllint
+        entry: yamllint
+        language: system
+        types: [yaml]
+      - id: ansible-lint
+        name: ansible-lint
+        entry: ansible-lint --strict
+        language: system
+        pass_filenames: false
+        always_run: true

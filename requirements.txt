@@ -1,0 +1,4 @@
+# Runtime Python-зависимости управляющего узла Ansible (ставятся в .venv).
+# Продуктив: make install  (или: pip install -r requirements.txt)
+ansible==12.0.0
+passlib==1.7.4      # password_hash(): в Python 3.13 модуль crypt удалён из stdlib
