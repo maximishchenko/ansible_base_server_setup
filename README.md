@@ -35,12 +35,12 @@ cp ~/.ssh/id_rsa.pub files/agent_rsa.pub
 
 3. Добавить значения переменных для каждого хоста (Пример: [host_vars/0.0.0.1/](host_vars/0.0.0.1)) и групп хостов (Пример: [group_vars/sample/](group_vars/sample/)). 
 
-> [!info]
+> [!NOTE]
 > [Перечень используемых переменных](roles/bootstrap/README.md#Используемые%20переменные)
 
 ## Запуск
 
-> [!info]
+> [!NOTE]
 > Возможно осуществлять запуск `playbook` двумя способами: make и прямой запуск playbook
 
 1. С помощью ```Makefile```:
