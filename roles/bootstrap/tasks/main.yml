@@ -1,0 +1,17 @@
+---
+- name: Bootstrap verify variables
+  ansible.builtin.include_tasks: includes/00-validate_vars.yml
+- name: Bootstrap install packages
+  ansible.builtin.include_tasks: includes/10-install_packages.yml
+- name: Bootstrap create deploy user
+  ansible.builtin.include_tasks: includes/20-create_deploy_user.yml
+- name: Bootstrap setup SSH
+  ansible.builtin.include_tasks: includes/30-setup_ssh.yml
+- name: Bootstrap setup hostname
+  ansible.builtin.include_tasks: includes/40-setup_hostname.yml
+- name: Bootstrap setup root password
+  ansible.builtin.include_tasks: includes/50-setup_root_password.yml
+- name: Bootstrap setup NTP
+  ansible.builtin.include_tasks: includes/60-setup_ntp.yml
+- name: Bootstrap setup locales
+  ansible.builtin.include_tasks: includes/70-setup_locales.yml

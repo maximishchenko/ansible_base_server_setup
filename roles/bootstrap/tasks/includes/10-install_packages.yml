@@ -1,0 +1,27 @@
+---
+- name: Debian-based setup (Debian/Ubuntu)
+  when: ansible_facts['os_family'] == "Debian"
+  block:
+
+    - name: Update apt cache and upgrade all packages
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Upgrade packages
+      ansible.builtin.apt:
+        upgrade: safe
+
+    - name: Remove dependencies that are no longer required
+      ansible.builtin.apt:
+        autoremove: true
+
+    - name: Clean local repository of outdated package files
+      ansible.builtin.apt:
+        autoclean: true
+
+    - name: Install sudo (Debian-only)
+      ansible.builtin.apt:
+        name: sudo
+        state: present
+      when: ansible_facts['distribution'] == "Debian"

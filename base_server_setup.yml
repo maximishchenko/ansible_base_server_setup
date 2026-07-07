@@ -1,0 +1,9 @@
+---
+- name: Base server setup
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Include bootstrap role
+      ansible.builtin.include_role:
+        name: bootstrap

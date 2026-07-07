@@ -1,0 +1,24 @@
+---
+name: Ansible Lint Validation
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        pip install ansible ansible-lint
+
+    - name: Run make validate
+      run: make validate

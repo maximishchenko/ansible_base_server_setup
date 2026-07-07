@@ -1,0 +1,3 @@
+---
+vault_bootstrap_deploy_user: deploy
+vault_bootstrap_deploy_user_password_hash: deploypassword

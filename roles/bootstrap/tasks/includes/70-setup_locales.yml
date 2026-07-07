@@ -1,0 +1,27 @@
+---
+- name: Configure system locales
+  block:
+
+    - name: Ensure locales package is installed
+      become: true
+      ansible.builtin.package:
+        name: locales
+        state: present
+
+    - name: Ensure required locales are present in locale.gen
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/locale.gen
+        regexp: "^#?\\s*{{ item | regex_escape }}"
+        line: "{{ item }}"
+        state: present
+      loop: "{{ bootstrap_system_locales }}"
+      notify: Regenerate locales
+
+    - name: Flush handlers to generate locales immediately
+      ansible.builtin.meta: flush_handlers
+
+    - name: Set system default locale
+      become: true
+      ansible.builtin.command: update-locale LANG={{ bootstrap_system_default_locale }}
+      changed_when: false

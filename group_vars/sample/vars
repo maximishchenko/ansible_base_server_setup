@@ -1,0 +1,12 @@
+---
+bootstrap_ssh_users_group_name: ssh_users
+bootstrap_deploy_user: "{{ vault_bootstrap_deploy_user }}"
+bootstrap_deploy_user_password_hash: "{{ vault_bootstrap_deploy_user_password_hash }}"
+bootstrap_deploy_user_ssh_key_file: files/agent_rsa.pub
+bootstrap_system_timezone: "Europe/Moscow"
+bootstrap_timesyncd_ntp_servers: "0.pool.ntp.org 1.pool.ntp.org"
+bootstrap_timesyncd_fallback_servers: "2.pool.ntp.org 3.pool.ntp.org"
+bootstrap_system_locales:
+  - "en_US.UTF-8 UTF-8"
+  - "ru_RU.UTF-8 UTF-8"
+bootstrap_system_default_locale: "ru_RU.UTF-8 UTF-8"

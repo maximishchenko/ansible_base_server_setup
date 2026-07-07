@@ -1,0 +1,11 @@
+# Managed by Ansible - any manual changes will be overwritten
+
+# Include fallback for custom configurations
+Include /etc/ssh/sshd_config.d/*.conf
+
+# Standard system defaults
+ChallengeResponseAuthentication no
+X11Forwarding no
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server

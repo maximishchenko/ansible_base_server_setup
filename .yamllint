@@ -1,0 +1,14 @@
+---
+extends: default
+rules:
+  # Ansible требует длинные строки для команд
+  line-length:
+    max: 160
+    allow-non-breakable-words: true
+  # В Ansible часто используют true/false без кавычек
+  truthy:
+    check-keys: false
+  # Отступы строго 2 пробела для Ansible
+  indentation:
+    spaces: 2
+    indent-sequences: consistent

@@ -1,0 +1,43 @@
+---
+- name: Configure system timezone and timesyncd
+  block:
+
+    - name: Set system timezone
+      become: true
+      community.general.timezone:
+        name: "{{ bootstrap_system_timezone }}"
+
+    - name: Stop and disable conflicting NTP daemons
+      become: true
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: stopped
+        enabled: false
+      loop:
+        - chrony
+        - chronyd
+        - ntp
+        - ntpd
+      failed_when: false
+
+    - name: Deploy timesyncd.conf configuration
+      become: true
+      ansible.builtin.template:
+        src: templates/timesyncd/timesyncd.conf.j2
+        dest: /etc/systemd/timesyncd.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart systemd-timesyncd
+
+    - name: Ensure systemd-timesyncd service is enabled and started
+      become: true
+      ansible.builtin.service:
+        name: systemd-timesyncd
+        state: started
+        enabled: true
+
+    - name: Enable NTP synchronization via timedatectl
+      become: true
+      ansible.builtin.command: timedatectl set-ntp true
+      changed_when: false

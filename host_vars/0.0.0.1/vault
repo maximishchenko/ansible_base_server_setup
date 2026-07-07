@@ -1,0 +1,4 @@
+---
+vault_ansible_user: root
+vault_ansible_password: rootpassword
+vault_bootstrap_root_password_hash: rootnewpassword

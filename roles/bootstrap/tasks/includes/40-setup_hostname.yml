@@ -1,0 +1,16 @@
+---
+- name: Determine final hostname
+  ansible.builtin.set_fact:
+    final_hostname: "{{ bootstrap_unique_server_hostname | default('srv-' ~ ansible_default_ipv4.address | replace('.', '-')) }}"
+
+- name: Set system hostname
+  ansible.builtin.hostname:
+    name: "{{ final_hostname }}"
+  notify: Restart systemd-hostnamed
+
+- name: Update /etc/hosts
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.0\.1\s+localhost'
+    line: '127.0.0.1 localhost {{ final_hostname }}'
+    state: present

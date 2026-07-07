@@ -1,0 +1,9 @@
+---
+- name: Bootstrap restart SSH
+  ansible.builtin.import_tasks: includes/10-restart_ssh.yml
+- name: Bootstrap restart systemd-hostnamed
+  ansible.builtin.import_tasks: includes/20-restart_systemd-hostnamed.yml
+- name: Bootstrap restart systemd-timesyncd
+  ansible.builtin.import_tasks: includes/30-restart_systemd-timesyncd.yml
+- name: Bootstrap regenerate locales
+  ansible.builtin.import_tasks: includes/40-regenerate_locales.yml

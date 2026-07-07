@@ -1,0 +1,5 @@
+---
+- name: Restart systemd-hostnamed
+  ansible.builtin.systemd:
+    name: systemd-hostnamed
+    state: restarted

@@ -1,0 +1,45 @@
+---
+- name: Validate bootstrap_ssh_users_group_name variable
+  ansible.builtin.assert:
+    that:
+      - bootstrap_ssh_users_group_name is defined
+      - bootstrap_ssh_users_group_name | string | length > 0
+    fail_msg: "Ошибка: не задано значение переменной 'bootstrap_ssh_users_group_name'"
+    success_msg: "Проверка значения переменной bootstrap_ssh_users_group_name произведена успешно"
+
+- name: Validate bootstrap_deploy_user variable
+  ansible.builtin.assert:
+    that:
+      - bootstrap_deploy_user is defined
+      - bootstrap_deploy_user | string | length > 0
+    fail_msg: "Ошибка: не задано значение переменной 'bootstrap_deploy_user'"
+    success_msg: "Проверка значения переменной bootstrap_deploy_user произведена успешно"
+
+- name: Validate bootstrap_deploy_user_password_hash variable
+  ansible.builtin.assert:
+    that:
+      - bootstrap_deploy_user_password_hash is defined
+      - bootstrap_deploy_user_password_hash | string | length > 0
+    fail_msg: "Ошибка: не задано значение переменной 'bootstrap_deploy_user_password_hash'"
+    success_msg: "Проверка значения переменной bootstrap_deploy_user_password_hash произведена успешно"
+
+- name: Validate bootstrap_deploy_user_ssh_key_file variable
+  ansible.builtin.assert:
+    that:
+      - bootstrap_deploy_user_ssh_key_file is defined
+      - bootstrap_deploy_user_ssh_key_file | string | length > 0
+    fail_msg: "Ошибка: не задано значение переменной 'bootstrap_deploy_user_ssh_key_file'"
+    success_msg: "Проверка значения переменной bootstrap_deploy_user_ssh_key_file произведена успешно"
+
+- name: Validate bootstrap_root_password_hash variable
+  ansible.builtin.assert:
+    that:
+      - bootstrap_root_password_hash is defined
+      - bootstrap_root_password_hash | string | length > 0
+    fail_msg: "Ошибка: не задано значение переменной 'bootstrap_root_password_hash'"
+    success_msg: "Проверка значения переменной bootstrap_root_password_hash произведена успешно"
+
+- name: Check SSH-key file exists
+  ansible.builtin.fail:
+    msg: "Ошибка: локальный файл ключа {{ bootstrap_deploy_user_ssh_key_file }} отсутствует на управляющей станции и не может быть загружен!"
+  when: q('ansible.builtin.fileglob', bootstrap_deploy_user_ssh_key_file) | length == 0
