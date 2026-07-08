@@ -47,10 +47,10 @@
 | `bootstrap_unique_server_hostname` | Имя хоста для установки | Нет | Нет    | Нет    | Значение переменной не указано, но в случае отсутствия будет сгенерировано имя хоста на основании IP-адреса |
 | `bootstrap_root_password_hash` | Новый пароль пользователя `root` | Да | Нет    | Нет    | Пароль указывается в открытом виде. Шифруется средствами vault. Возможно расположить на уровне `host_vars` для групп хостов |
 | `bootstrap_system_timezone` | Часовой пояс | Да | `UTC`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
-| `bootstrap_timesyncd_ntp_servers` | Список NTP-серверов | Нет | `0.pool.ntp.org, 1.pool.ntp.org`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
-| `bootstrap_timesyncd_fallback_servers` | Список резервных NTP-серверов | Нет | `2.pool.ntp.org 3.pool.ntp.org`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
-| `bootstrap_system_locales` | Список системных локалей | Нет | `en_US.UTF-8 UTF-8 ru_RU.UTF-8 UTF-8`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
-| `bootstrap_system_default_locale` | Системная локализация по умолчанию | Нет | `ru_RU.UTF-8 UTF-8`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
+| `bootstrap_timesyncd_ntp_servers` | Список NTP-серверов (YAML-список) | Нет | `["0.pool.ntp.org", "1.pool.ntp.org"]`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
+| `bootstrap_timesyncd_fallback_servers` | Список резервных NTP-серверов (YAML-список) | Нет | `["2.pool.ntp.org", "3.pool.ntp.org"]`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
+| `bootstrap_system_locales` | Список системных локалей (YAML-список) | Нет | `["en_US.UTF-8 UTF-8", "ru_RU.UTF-8 UTF-8"]`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
+| `bootstrap_system_default_locale` | Системная локализация по умолчанию (YAML-список) | Нет | `["ru_RU.UTF-8 UTF-8"]`    | Нет    | Возможно расположить на уровне `group_vars` для групп хостов |
 
 
 ### Пример запуска

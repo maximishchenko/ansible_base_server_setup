@@ -2,8 +2,12 @@
 bootstrap_ssh_users_group_name: ssh_users
 bootstrap_deploy_user: deploy
 bootstrap_system_timezone: "UTC"
-bootstrap_timesyncd_ntp_servers: "0.pool.ntp.org 1.pool.ntp.org"
-bootstrap_timesyncd_fallback_servers: "2.pool.ntp.org 3.pool.ntp.org"
+bootstrap_timesyncd_ntp_servers:
+  - "0.pool.ntp.org"
+  - "1.pool.ntp.org"
+bootstrap_timesyncd_fallback_servers:
+  - "2.pool.ntp.org"
+  - "3.pool.ntp.org"
 bootstrap_system_locales:
   - "en_US.UTF-8 UTF-8"
   - "ru_RU.UTF-8 UTF-8"

@@ -1,5 +1,5 @@
 # Managed by Ansible
 
 [Time]
-NTP={{ bootstrap_timesyncd_ntp_servers }}
-FallbackNTP={{ bootstrap_timesyncd_fallback_servers }}
+NTP={{ bootstrap_timesyncd_ntp_servers | join(' ') }}
+FallbackNTP={{ bootstrap_timesyncd_fallback_servers | join(' ') }}
